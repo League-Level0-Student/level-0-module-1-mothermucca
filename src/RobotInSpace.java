@@ -4,15 +4,15 @@
  */
 
 
-	import java.awt.KeyEventDispatcher; 
-	import java.awt.KeyboardFocusManager; 
-	import java.awt.event.KeyEvent; 
-	import java.io.File;
-	import javax.sound.sampled.AudioInputStream; 
-	import javax.sound.sampled.AudioSystem; 
-	import javax.sound.sampled.Clip;
+import java.awt.KeyEventDispatcher; 
+import java.awt.KeyboardFocusManager; 
+import java.awt.event.KeyEvent; 
 
-    import org.jointheleague.graphical.robot.Robot;
+import javax.sound.sampled.AudioInputStream; 
+import javax.sound.sampled.AudioSystem; 
+import javax.sound.sampled.Clip;
+
+import org.jointheleague.graphical.robot.Robot;
 	
 	public class RobotInSpace implements KeyEventDispatcher {
 		
@@ -21,15 +21,32 @@
 	/*  Make the Robot move around the screen when the arrow keys are pressed... */
 	private void moveRobot(int keyPressed) {
 	    // 0. Print out the keyPressed variable and write down the numbers for each arrow key
-
+		System.out.println(keyPressed);
+		
 	    // 1. If the up arrow is pressed, move the Robot up the screen.
+		if (keyPressed == KeyEvent.VK_UP) {
+			rob.setAngle(0);
+			rob.move(100);
+		}
 
 	    // 2. If the down arrow is pressed, move the Robot down.
+		if (keyPressed == KeyEvent.VK_DOWN) {
+			rob.setAngle(180);
+			rob.move(100);		
+		}
 
 	    // 3. If the left arrow is pressed, make the Robot go left. Hint: Make sure to end with the Robot facing UP.
+		if (keyPressed == KeyEvent.VK_LEFT) {
+			rob.setAngle(270);
+			rob.move(100);		
+		}
 	    
 	    // 4. If right is pressed, move the Robot right.
-	    
+		if (keyPressed == KeyEvent.VK_RIGHT) {
+			rob.setAngle(90);
+			rob.move(100);			
+		}
+		
 	    // 5. Then move the Robot to RD-2D for a surprise! 
 	}
 
@@ -51,6 +68,7 @@
 	    rob.setWindowImage("planet.jpg");
 	    rob.penUp();
 	    rob.setSpeed(10);
+    	rob.moveTo(100, 100);
 	}
 
 	public boolean dispatchKeyEvent(KeyEvent e) {
